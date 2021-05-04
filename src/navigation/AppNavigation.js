@@ -2,7 +2,7 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from "react-navigation-tabs";
-// import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MainScreen } from "../screens/MainScreen";
 import { PostScreen } from "../screens/PostScreen";
@@ -38,7 +38,7 @@ const BookedNavigator = createStackNavigator({
   }
 })
 
-const BottomNavigator = createBottomTabNavigator({
+const bottomTabsConfig = {
   Post: {
     screen: PostNavigator,
     navigationOptions: {
@@ -53,7 +53,17 @@ const BottomNavigator = createBottomTabNavigator({
       tabBarIcon: info => <Ionicons name='ios-star' size={25} color={info.tintColor}/>
     }
   }
-}, {
+};
+
+const BottomNavigator = Platform.OS === 'android'
+  ? createMaterialBottomTabNavigator(bottomTabsConfig, {
+    activeTintColor: '#fff',
+    shifting: true,
+    barStyle: {
+      backgroundColor: THEME.MAIN_COLOR,
+    }
+  })
+  : createBottomTabNavigator(bottomTabsConfig, {
   tabBarOptions: {
     activeTintColor: THEME.MAIN_COLOR,
   }

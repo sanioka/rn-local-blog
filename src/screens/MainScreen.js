@@ -6,8 +6,6 @@ import { AppHeaderIcon } from "../components/AppHeaderIcon";
 import { PostList } from "../components/PostList";
 import { loadPosts } from "../store/actions/postActions";
 
-// import { DATA } from '../data';
-
 export const MainScreen = ({ navigation }) => {
   const openPostHandler = postItem => {
     navigation.navigate('Post', {

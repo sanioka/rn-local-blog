@@ -27,4 +27,16 @@ export class DB {
       })
     })
   }
+  static createPost({ text, date, booked, img }) {
+    return new Promise((resolve, reject) => {
+      db.transaction(tx => {
+        tx.executeSql(
+          `INSERT INTO posts (text, date, 0, img) VALUES (?, ?, ?, ?)`,
+          [text, date, booked, img],
+          (_, result) => resolve(result.insertId),
+          (_, error) => reject(error)
+        )
+      })
+    })
+  }
 }

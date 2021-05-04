@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 
 export const BookedScreen = (props) => {
   return (
-    <View styles={style.center}>
+    <View style={styles.center}>
       <Text>Main screen</Text>
     </View>
   )

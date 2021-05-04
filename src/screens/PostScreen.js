@@ -2,16 +2,21 @@ import React from 'react';
 
 import { StyleSheet, View, Text } from "react-native";
 
-export const PostScreen = (props) => {
+export const PostScreen = ({ navigation }) => {
+  const postId = navigation.getParam('postId');
+
   return (
     <View style={styles.center}>
-      <Text>Post screen</Text>
+      <Text>{postId}</Text>
     </View>
   )
 }
 
-PostScreen.navigationOptions = {
-  headerTitle: 'Post #42',
+PostScreen.navigationOptions = ({ navigation }) => {
+  const date = navigation.getParam('date');
+  return {
+    headerTitle: `Post from ${new Date(date).toLocaleDateString()}`,
+  }
 }
 
 const styles = StyleSheet.create({

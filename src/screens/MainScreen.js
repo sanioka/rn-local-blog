@@ -6,15 +6,18 @@ import { Post } from "../components/Post";
 
 
 export const MainScreen = ({ navigation }) => {
-  const goToPost = () => {
-    navigation.navigate('Post');
+  const openPostHandler = postItem => {
+    navigation.navigate('Post', {
+      postId: postItem.id,
+      date: postItem.date,
+    });
   }
   return (
     <View style={styles.wrapper}>
       <FlatList
         data={DATA}
         keyExtractor={post => post.id.toString()}
-        renderItem={({ item }) => <Post post={item}/>}
+        renderItem={({ item }) => <Post post={item} onOpen={openPostHandler}/>}
       />
     </View>
   )

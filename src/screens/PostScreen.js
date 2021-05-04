@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppHeaderIcon } from "../components/AppHeaderIcon";
 import { THEME } from "../theme";
-import { toggleBooked } from "../store/actions/postActions";
+import { removePost, toggleBooked } from "../store/actions/postActions";
 
 export const PostScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId');
@@ -41,12 +41,19 @@ export const PostScreen = ({ navigation }) => {
         },
         {
           text: 'Delete',
-          onPress: () => console.log('OK Pressed'),
+          onPress() {
+            navigation.navigate('Main');
+            dispatch(removePost(postId));
+          },
           style: 'destructive',
         }
       ],
       { cancelable: false },
     );
+  }
+
+  if (!postItem) {
+    return null;
   }
 
   return (

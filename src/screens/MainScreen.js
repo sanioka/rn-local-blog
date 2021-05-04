@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AppHeaderIcon } from "../components/AppHeaderIcon";
 import { PostList } from "../components/PostList";
+import { loadPosts } from "../store/actions/postActions";
 
-import { DATA } from '../data';
+// import { DATA } from '../data';
 
 export const MainScreen = ({ navigation }) => {
   const openPostHandler = postItem => {
@@ -14,7 +16,15 @@ export const MainScreen = ({ navigation }) => {
       booked: postItem.booked,
     });
   }
-  return <PostList data={DATA} onOpen={openPostHandler}/>
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, [dispatch])
+
+  const allPosts = useSelector(state => state.post.allPosts);
+
+  return <PostList data={allPosts} onOpen={openPostHandler}/>
 };
 
 MainScreen.navigationOptions = ({ navigation }) => ({

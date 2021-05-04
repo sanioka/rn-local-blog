@@ -1,14 +1,31 @@
 import React from 'react';
 
 import { StyleSheet, View, Text } from "react-native";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { AppHeaderIcon } from "../components/AppHeaderIcon";
 
 export const CreateScreen = (props) => {
   return (
     <View style={styles.center}>
-      <Text>Main screen</Text>
+      <Text>Create screen</Text>
     </View>
   )
 }
+
+CreateScreen.navigationOptions = ({ navigation }) => ({
+  headerTitle: 'Create',
+  headerLeft: () => (
+    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+      <Item
+        title='Toggle drawer'
+        iconName='ios-menu'
+        onPress={() => {
+          navigation.toggleDrawer();
+        }}
+      />
+    </HeaderButtons>
+  ),
+})
 
 const styles = StyleSheet.create({
   center: {

@@ -12,6 +12,7 @@ export const MainScreen = ({ navigation }) => {
     navigation.navigate('Post', {
       postId: postItem.id,
       date: postItem.date,
+      booked: postItem.booked,
     });
   }
   return (
@@ -36,6 +37,15 @@ MainScreen.navigationOptions = {
       />
     </HeaderButtons>
  ),
+  headerLeft: () => (
+    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+      <Item
+        title='Toggle drawer'
+        iconName='ios-menu'
+        onPress={() => console.log('press photo')}
+      />
+    </HeaderButtons>
+  ),
 }
 
 const styles = StyleSheet.create({

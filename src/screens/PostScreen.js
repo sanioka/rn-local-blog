@@ -9,7 +9,7 @@ import { AppHeaderIcon } from "../components/AppHeaderIcon";
 export const PostScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId');
 
-  const postItem = DATA.find(item => item.id = postId);
+  const postItem = DATA.find(item => item.id === postId);
 
   // useEffect(() => {
   //   navigation.setParams({ booked: postItem.booked });

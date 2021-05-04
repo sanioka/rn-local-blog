@@ -6,13 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppHeaderIcon } from "../components/AppHeaderIcon";
 import { THEME } from "../theme";
 import { toggleBooked } from "../store/actions/postActions";
-import { DATA } from "../data";
 
 export const PostScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId');
   const dispatch = useDispatch();
 
-  const postItem = DATA.find(item => item.id === postId);
+  const postItem = useSelector(state => state.post.allPosts.find(p => p.id === postId));
 
   const booked = useSelector(state =>
     state.post.bookedPosts.some(post => post.id === postId)

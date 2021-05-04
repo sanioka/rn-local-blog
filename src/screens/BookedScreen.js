@@ -18,15 +18,17 @@ export const BookedScreen = ({ navigation }) => {
 
 };
 
-BookedScreen.navigationOptions = {
+BookedScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Booked',
   headerLeft: () => (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
         title='Toggle drawer'
         iconName='ios-menu'
-        onPress={() => console.log('press photo')}
+        onPress={() => {
+          navigation.toggleDrawer();
+        }}
       />
     </HeaderButtons>
   ),
-}
+})

@@ -7,7 +7,8 @@ import { AppHeaderIcon } from "../components/AppHeaderIcon";
 export const AboutScreen = (props) => {
   return (
     <View style={styles.center}>
-      <Text>About screen</Text>
+      <Text>Its best application for blog.</Text>
+      <Text>App version <Text style={styles.version}>1.0.1</Text></Text>
     </View>
   )
 }
@@ -32,5 +33,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  version: {
+    fontFamily: 'open-bold',
   }
 })

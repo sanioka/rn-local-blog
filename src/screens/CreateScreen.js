@@ -2,14 +2,28 @@ import React, { useState } from 'react';
 
 import { StyleSheet, View, Text, TextInput, Image, Button, ScrollView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useDispatch } from 'react-redux';
+
 import { AppHeaderIcon } from "../components/AppHeaderIcon";
 import { THEME } from "../theme";
+import { addPost } from "../store/actions/postActions";
 
-export const CreateScreen = (props) => {
+export const CreateScreen = ({ navigation }) => {
   const [text, setText] = useState('')
+  const dispatch = useDispatch();
+
+  const imgMockUrl = 'https://cdn.londonandpartners.com/visit/general-london/areas/river/76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg';
 
   const createPostHandler = () => {
+    const post = {
+      date: new Date().toJSON(),
+      text,
+      img: imgMockUrl,
+      booked: false,
+    }
 
+    dispatch(addPost(post));
+    navigation.navigate('Main');
   }
 
   return (
@@ -26,7 +40,7 @@ export const CreateScreen = (props) => {
           />
           <Image
             style={styles.image}
-            source={{uri: 'https://cdn.londonandpartners.com/visit/general-london/areas/river/76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg'}}/>
+            source={{uri: imgMockUrl}}/>
           <Button title='Create post' color={THEME.MAIN_COLOR} onPress={createPostHandler}/>
         </View>
       </TouchableWithoutFeedback>

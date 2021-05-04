@@ -1,10 +1,10 @@
 import React from 'react';
-
-import { StyleSheet, View, Text, Button, FlatList } from "react-native";
-import { DATA } from '../data';
-import { Post } from "../components/Post";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+
 import { AppHeaderIcon } from "../components/AppHeaderIcon";
+import { PostList } from "../components/PostList";
+
+import { DATA } from '../data';
 
 export const BookedScreen = ({ navigation }) => {
   const openPostHandler = postItem => {
@@ -14,15 +14,8 @@ export const BookedScreen = ({ navigation }) => {
       booked: postItem.booked,
     });
   }
-  return (
-    <View style={styles.wrapper}>
-      <FlatList
-        data={DATA.filter(item => item.booked)}
-        keyExtractor={post => post.id.toString()}
-        renderItem={({ item }) => <Post post={item} onOpen={openPostHandler}/>}
-      />
-    </View>
-  )
+  return <PostList data={DATA.filter(post => post.booked)} onOpen={openPostHandler}/>
+
 };
 
 BookedScreen.navigationOptions = {
@@ -37,14 +30,3 @@ BookedScreen.navigationOptions = {
     </HeaderButtons>
   ),
 }
-
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  wrapper: {
-    padding: 10,
-  }
-})

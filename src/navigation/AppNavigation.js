@@ -10,33 +10,26 @@ import { THEME } from "../theme";
 import { Platform } from "react-native";
 import { BookedScreen } from "../screens/BookedScreen";
 
+const navigatorStackConfig = {
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: Platform.OS === 'ios' ? '#fff' : THEME.MAIN_COLOR,
+    },
+    headerTintColor: Platform.OS === 'ios' ? THEME.MAIN_COLOR : '#fff',
+  }
+};
+
 const PostNavigator = createStackNavigator({
   Main: MainScreen,
   Post: {
     screen: PostScreen,
   }
-}, {
-  initialRouteName: 'Main',
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: Platform.OS === 'ios' ? '#fff' : THEME.MAIN_COLOR,
-    },
-    headerTintColor: Platform.OS === 'ios' ? THEME.MAIN_COLOR : '#fff',
-  }
-})
+}, navigatorStackConfig)
 
 const BookedNavigator = createStackNavigator({
   Booked: BookedScreen,
   Post: PostScreen,
-}, {
-  initialRouteName: 'Booked',
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: Platform.OS === 'ios' ? '#fff' : THEME.MAIN_COLOR,
-    },
-    headerTintColor: Platform.OS === 'ios' ? THEME.MAIN_COLOR : '#fff',
-  }
-})
+}, navigatorStackConfig)
 
 const bottomTabsConfig = {
   Post: {

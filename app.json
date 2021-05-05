@@ -17,13 +17,25 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sanioka.rnselfblog",
+      "buildNumber": "1.0.1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/rn-icon.png",
         "backgroundColor": "#242832"
-      }
+      },
+      "package": "com.sanioka.rnselfblog",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA",
+        "MEDIA_LIBRARY",
+        "MEDIA_LIBRARY_WRITE_ONLY",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "INTERNET"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

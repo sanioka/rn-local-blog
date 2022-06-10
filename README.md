@@ -1,28 +1,68 @@
 # rn-self-posts
 
-## Android keystore backup 
+### How to build project
 
-~ expo fetch:android:keystore
+⚽️ Prepare expo environment by https://docs.expo.dev/get-started/installation/
 
-Keystore credentials
-Keystore password: 80454c8f14054261a318674bdd3cc30c
-Key alias:         QHNhbmlva2Evcm4tc2VsZi1ibG9n
-Key password:      0f58de2de4014e56bc830e477f885361
+⚽️ `npm install` or `npm install --force` (if needed workaround)
 
-Path to Keystore:  ./rn-self-blog.jks
+⚽️ ⚠️ `yarn patch-package`️ (one more workaround)
 
-## iOS build:ios
+⚽️ `expo start` or `npm start`
 
-Experience: @sanioka/rn-self-blog, bundle identifier: com.sanioka.rnselfblog
-Provisioning profile (ID: X4S23ZMM53)
-Apple Team ID: Y2GP594K4L,  Apple Team Name: Aleksandr Ivanov (Individual)
+⚽️ Install Expo app to mobile phone.
 
-Project Credential Configuration:
-Experience: @sanioka/rn-self-blog, bundle identifier: com.sanioka.rnselfblog
-Provisioning profile (ID: X4S23ZMM53)
-Apple Team ID: Y2GP594K4L,  Apple Team Name: Aleksandr Ivanov (Individual)
+⚽️ Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
 
-Distribution Certificate - Certificate ID: KA56Y4Q788
-Apple Team ID: Y2GP594K4L,  Apple Team Name: Aleksandr Ivanov (Individual)
-Push Notifications Key - Key ID: GPZTNQBW5W
-Apple Team ID: Y2GP594K4L,  Apple Team Name: Aleksandr Ivanov (Individual)
+<br>
+
+### Upgrading Expo SDK
+
+https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/
+
+`npm i -g expo-cli`
+
+`expo upgrade`
+
+<br>
+
+### Notes
+
+⚠️ This course example use legacy React Navigation V4. Be careful when updating Expo SDK.
+
+Because new Expo SDK require to update dependencies, but some legacy React Navigation V4 modules were frozen and legacy dependencies too.
+
+<br>
+
+#### ReactNavigation V4 'react-navigation-drawer' legacy component issue
+
+It used old dependency versions of 'react-native-reanimated' and 'react-native-gesture-handler'.
+
+To fix 'react-native-gesture-handler' — `npm install --force`
+
+To fix 'react-native-reanimated' — `yarn patch-package`
+
+<br>
+
+⚠️ TypeError: interpolate is not a function. How to fix: `yarn patch-package`️. Explanation:
+
+This error, because 'react-native-reanimated' was updated together with Expo SDK v45.
+
+And 'react-navigation-drawer' component still used old previous 'react-native-reanimated' API.
+
+We need to patch 'react-navigation-drawer' to use new 'interpolateNode' method instead of 'interpolate'.
+
+https://stackoverflow.com/questions/67840220/getting-typeerror-interpolate-is-not-a-function-in-react-native
+
+> 'I also faced this issue and you don't have to downgrade your react-native-reanimated.
+In the latest versions of reanimated, interpolate was changed to interpolateNode.<br>
+So all you have to do is to open the Drawer.js file found in:'
+'node_modules\react-navigation-drawer\lib\module\views and replace interpolate with interpolateNode.<br>
+It is in two places, so make sure you change both of them.'
+
+<br>
+
+### Сourse author
+
+@Vladilen Minin<br>
+https://www.udemy.com/course/react-native-complete-guide/

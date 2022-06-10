@@ -62,6 +62,16 @@ It is in two places, so make sure you change both of them.'
 
 <br>
 
+⚠️ Used `yarn patch-package` instead `npx patch-package`
+
+Because yarn works out-of-the-box, after npx you can see error:
+
+> sh: patch-package: command not found
+
+add ./node_modules/.bin to your $PATH environment variable
+
+https://github.com/ds300/patch-package/issues/14
+
 ### Сourse author
 
 @Vladilen Minin<br>

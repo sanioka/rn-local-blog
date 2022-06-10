@@ -3220,7 +3220,7 @@
   "resolved" "https://registry.npmjs.org/expo-permissions/-/expo-permissions-13.2.0.tgz"
   "version" "13.2.0"
 
-"expo-splash-screen@~0.15.0":
+"expo-splash-screen@^0.15.1", "expo-splash-screen@~0.15.0":
   "integrity" "sha512-Yvz6p/ig+cQp9c1PLSm1YshpNJXRp/xtxajfwPq2kampf61zA+xnoMk+J6YcNeXeIlqHysj3ND2tMhEEQjM/ow=="
   "resolved" "https://registry.npmjs.org/expo-splash-screen/-/expo-splash-screen-0.15.1.tgz"
   "version" "0.15.1"

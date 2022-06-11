@@ -12,8 +12,8 @@ export const Post = ({ post, onOpen }) => {
           </View>
         </ImageBackground>
       </View>
-      <View>
-        <Text style={styles.titleContainer}>{post.text.split('\n')[0].slice(0, 64)}</Text>
+      <View style={{marginBottom: 10}}>
+        <Text numberOfLines={1} style={styles.titleContainer}>{post.text}</Text>
       </View>
     </TouchableOpacity>
   )

@@ -8,7 +8,7 @@ import { PostList } from "../components/PostList";
 import { loadPosts } from "../store/actions/postActions";
 import { THEME } from "../theme";
 
-import { MOCK_DATA } from '../mock-data/data';
+import { MOCK_DATA_CARS } from '../mock-data/mock-data';
 import { DB } from "../service/db.service";
 
 export const MainScreen = ({ navigation }) => {
@@ -30,7 +30,7 @@ export const MainScreen = ({ navigation }) => {
   const isLoading = useSelector(state => state.post.loading);
 
   async function loadMockPosts() {
-    await DB.createPostsFromList(MOCK_DATA);
+    await DB.createPostsFromList(MOCK_DATA_CARS);
     dispatch(loadPosts());
   }
 
@@ -82,7 +82,6 @@ MainScreen.navigationOptions = ({ navigation }) => ({
     </HeaderButtons>
   ),
 })
-
 
 const styles = StyleSheet.create({
   center: {

@@ -65,10 +65,6 @@ export const PostScreen = ({ navigation }) => {
           <View style={styles.textWrap}>
             <Text style={styles.title}>
               {postItem.text}
-              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
-              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
-              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
-              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
             </Text>
           </View>
         </View>

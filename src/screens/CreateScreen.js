@@ -12,7 +12,7 @@ import { PhotoPicker } from "../components/PhotoPicker";
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState('')
-  const imgRef = useRef();
+  const imgRef = useRef(); // useRef is optimisation to avoid re-render
 
   const createPostHandler = () => {
     const post = {

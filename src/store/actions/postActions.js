@@ -1,5 +1,5 @@
 import { ADD_POST, LOAD_POSTS, REMOVE_POST, TOGGLE_BOOKED } from "../types";
-import { DB } from "../../db";
+import { DB } from "../../service/db.service";
 import * as FileSystem from 'expo-file-system';
 
 export const loadPosts = () => {

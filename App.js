@@ -1,10 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
-
-import { Provider } from 'react-redux';
 import { View } from 'react-native';
+import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { bootstrap } from "./src/bootstrap";
+import { bootstrap } from "./src/service/bootstrap.helper";
 import { AppNavigation } from "./src/navigation/AppNavigation";
 import store from './src/store'
 

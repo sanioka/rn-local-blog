@@ -23,6 +23,7 @@ export const MainScreen = ({ navigation }) => {
     dispatch(loadPosts());
   }, [dispatch])
 
+  // getter state from redux
   const allPosts = useSelector(state => state.post.allPosts);
   const isLoading = useSelector(state => state.post.loading);
 

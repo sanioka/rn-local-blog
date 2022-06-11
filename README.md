@@ -1,4 +1,4 @@
-# rn-local-blog
+# rn-local-blog (ex rn-self-posts)
 
 | <img src="./images/image1.png" alt="App Preview" width="20%"/> | <img src="./images/image2.png" alt="App Preview" width="20%"/> |
 

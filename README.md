@@ -1,8 +1,13 @@
 # rn-local-blog (ex rn-self-posts)
 
-| <img src="./images/image1.png" alt="App Preview" width="20%"/> | <img src="./images/image2.png" alt="App Preview" width="20%"/> |
+| <img src="./images/image1.png" alt="App Preview" width="20%"/>
+| <img src="./images/image2.png" alt="App Preview" width="20%"/>
 
-Prototype:
+| <img src="./images/expo-go.svg" alt="Expo Go" width="20%"/>
+| Realtime Demo by Expo: https://expo.dev/@sanioka/rn-local-blog?serviceType=classic&distribution=expo-go
+
+
+### Prototype:
 
 | <img src="./images/prototype-1.png" alt="Prototype Preview" width="20%"/> |
 

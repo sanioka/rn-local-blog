@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, ActivityIndicator } from "react-native";
+import { View, StyleSheet, ActivityIndicator, Text, Button } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,6 +8,8 @@ import { PostList } from "../components/PostList";
 import { loadPosts } from "../store/actions/postActions";
 import { THEME } from "../theme";
 
+import { MOCK_DATA } from '../mock-data/data';
+import { DB } from "../service/db.service";
 
 export const MainScreen = ({ navigation }) => {
   const openPostHandler = postItem => {
@@ -27,6 +29,11 @@ export const MainScreen = ({ navigation }) => {
   const allPosts = useSelector(state => state.post.allPosts);
   const isLoading = useSelector(state => state.post.loading);
 
+  async function loadMockPosts() {
+    await DB.createPostsFromList(MOCK_DATA);
+    dispatch(loadPosts());
+  }
+
   if (isLoading) {
     return (
       <View style={styles.center}>
@@ -35,16 +42,28 @@ export const MainScreen = ({ navigation }) => {
     )
   }
 
-  return <PostList data={allPosts} onOpen={openPostHandler}/>
+  if (!allPosts.length) {
+    return (
+      <View style={styles.wrapper}>
+        <Text style={styles.text}>No any posts, please add it manually</Text>
+        <Text style={styles.text}>or</Text>
+        <View style={{width: '50%'}}>
+          <Button title='load mock data' onPress={loadMockPosts}/>
+        </View>
+      </View>
+    )
+  }
+
+  return <PostList data={allPosts} onOpen={openPostHandler}/>;
 };
 
 MainScreen.navigationOptions = ({ navigation }) => ({
-  headerTitle: 'My blog',
+  headerTitle: 'Local Blog App',
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
         title='Take photo'
-        iconName='ios-camera'
+        iconName='create-outline'
         onPress={() => {
           navigation.push('Create');
         }}
@@ -70,5 +89,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  postContainer: {
+    flex: 1,
+  },
+  wrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontFamily: 'open-regular',
+    textAlign: 'center',
+    fontSize: 16,
+    paddingBottom: 5,
   }
 })

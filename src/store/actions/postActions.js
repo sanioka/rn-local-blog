@@ -31,16 +31,21 @@ export const removePost = id => async dispatch => {
 }
 
 export const addPost = post => async dispatch => {
-  const fileName = post.img.split('/').pop();
-  const newPatch = FileSystem.documentDirectory + fileName;
+  let newPatch = '';
 
-  try {
-    await FileSystem.moveAsync({
-      to: newPatch,
-      from: post.img,
-    })
-  } catch(e) {
-    console.log('Error', e)
+  if (post.img) {
+    try {
+      const fileName = post.img.split('/').pop();
+      newPatch = FileSystem.documentDirectory + fileName;
+
+      await FileSystem.moveAsync({
+        to: newPatch,
+        from: post.img,
+      })
+    } catch(e) {
+      console.log('Error', e)
+      newPatch = '';
+    }
   }
 
   const payload = {

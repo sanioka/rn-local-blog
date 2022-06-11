@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 
 import { bootstrap } from "./src/service/bootstrap.helper";
 import { AppNavigation } from "./src/navigation/AppNavigation";
@@ -49,6 +50,7 @@ export default function App() {
       <Provider store={store}>
         <AppNavigation />
       </Provider>
+      <StatusBar style="dark"/>
     </View>
   );
 }

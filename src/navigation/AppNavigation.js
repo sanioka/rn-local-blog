@@ -29,7 +29,13 @@ const PostNavigator = createStackNavigator({
   Main: MainScreen, // first record is initialRouteName
   Post: {
     screen: PostScreen,
-  }
+  },
+  Create: {
+    screen: CreateScreen,
+    navigationOptions: {
+      headerBackTitleVisible: false,
+    },
+  },
 }, navigatorStackConfig)
 
 const BookedNavigator = createStackNavigator({
@@ -72,9 +78,9 @@ const AboutNavigator = createStackNavigator({
   About: AboutScreen,
 }, navigatorStackConfig)
 
-const CreateNavigator = createStackNavigator({
-  Create: CreateScreen,
-}, navigatorStackConfig)
+// const CreateNavigator = createStackNavigator({
+//   Create: CreateScreen,
+// }, navigatorStackConfig)
 
 const MainNavigator = createDrawerNavigator({
   PostTabs: {
@@ -87,22 +93,24 @@ const MainNavigator = createDrawerNavigator({
   About: {
     screen: AboutNavigator,
     navigationOptions: {
-      drawerLabel: 'About App',
+      drawerLabel: 'About',
     }
   },
-  Create: {
-    screen: CreateNavigator,
-    navigationOptions: {
-      drawerLabel: 'Create post',
-    }
-  }
+  // Create: {
+  //   screen: CreateNavigator,
+  //   navigationOptions: {
+  //     drawerLabel: 'Create post',
+  //   }
+  // }
 }, {
   contentOptions: {
     activeTintColor: THEME.MAIN_COLOR,
     labelStyle: {
       fontFamily: 'open-bold',
     }
-  }
+  },
+  edgeWidth: 0, // disable drawer gestures at all if needed, because drawerLockMode 'locked-closed' doesnt work correctly
+  hideStatusBar: true,
 })
 
 export const AppNavigation = createAppContainer(MainNavigator);

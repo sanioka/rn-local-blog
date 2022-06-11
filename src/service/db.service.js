@@ -27,6 +27,7 @@ export class DB {
       })
     })
   }
+
   static createPost({ text, date, booked, img }) {
     return new Promise((resolve, reject) => {
       db.transaction(tx => {
@@ -38,6 +39,10 @@ export class DB {
         )
       })
     })
+  }
+
+  static async createPostsFromList(postList = []) {
+    postList.map(async postItem => await DB.createPost(postItem));
   }
 
   static updatePost(post) {

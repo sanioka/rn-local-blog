@@ -7,8 +7,8 @@ import { AppHeaderIcon } from "../components/AppHeaderIcon";
 export const AboutScreen = (props) => {
   return (
     <View style={styles.center}>
-      <Text>Its best application for blog.</Text>
-      <Text>App version <Text style={styles.version}>1.0.1</Text></Text>
+      <Text style={styles.text} textAlign={'center'}>React Native Udemy Course {"\n"} by Vladilen Minin.</Text>
+      <Text style={styles.text}>App version <Text style={styles.version}>1.0.2</Text></Text>
     </View>
   )
 }
@@ -34,7 +34,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text: {
+    paddingBottom: 10,
+    textAlign: 'center',
+  },
   version: {
     fontFamily: 'open-bold',
-  }
+  },
 })

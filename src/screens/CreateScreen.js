@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-import { StyleSheet, View, Text, TextInput, Image, Button, ScrollView, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button, ScrollView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch } from 'react-redux';
 
@@ -12,7 +12,14 @@ import { PhotoPicker } from "../components/PhotoPicker";
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState('')
-  const imgRef = useRef(); // useRef is optimisation to avoid re-render
+
+  /**
+   * useRef is optimisation to avoid re-render, implemented here just to learn how to use it
+   *
+   * For current case its better to use useState() instead of useRef(),
+   * because we need to add this variable to validate 'Create Post' 'disabled' prop
+   */
+  const imgRef = useRef();
 
   const createPostHandler = () => {
     const post = {
@@ -31,62 +38,74 @@ export const CreateScreen = ({ navigation }) => {
   }
 
   return (
-    <ScrollView style={styles.wrapper}>
-      <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
-        <View>
-          <Text style={styles.title}>Create new post</Text>
-          <TextInput
-            style={styles.textarea}
-            placeholder='Input text here'
-            value={text}
-            onChangeText={setText}
-            multiline
-          />
-          <PhotoPicker onPick={photoPickHandler}/>
-          <Button
-            title='Create post'
-            color={THEME.MAIN_COLOR}
-            onPress={createPostHandler}
-            disabled={!text}
-          />
-        </View>
-      </TouchableWithoutFeedback>
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollContainer}>
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
+          <View>
+            <PhotoPicker onPick={photoPickHandler}/>
+            <TextInput
+              style={styles.textarea}
+              placeholder='Input multiline text here'
+              value={text}
+              onChangeText={setText}
+              multiline
+              autoCorrect={false}
+              autoCapitalize='none'
+              enablesReturnKeyAutomatically={true}
+              maxLength={140}
+            />
+          </View>
+        </TouchableWithoutFeedback>
+      </ScrollView>
+      <View style={styles.buttonContainer}>
+        <Button
+          title='Create post'
+          color={THEME.MAIN_COLOR}
+          onPress={createPostHandler}
+          disabled={!text}
+        />
+      </View>
+    </View>
   )
 }
 
 CreateScreen.navigationOptions = ({ navigation }) => ({
-  headerTitle: 'Create',
-  headerLeft: () => (
-    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-      <Item
-        title='Toggle drawer'
-        iconName='ios-menu'
-        onPress={() => {
-          navigation.toggleDrawer();
-        }}
-      />
-    </HeaderButtons>
-  ),
+  headerTitle: 'Create new post',
+  // headerRight: () => (
+  //   <Button
+  //     onPress={() => alert('This is a button!')}
+  //     title="Done"
+  //     color={THEME.MAIN_COLOR}
+  //     disabled={true}
+  //   />
+  // ),
+  // headerLeft: () => (
+  //   <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+  //     <Item
+  //       title='Toggle drawer'
+  //       iconName='ios-menu'
+  //       onPress={() => {
+  //         navigation.toggleDrawer();
+  //       }}
+  //     />
+  //   </HeaderButtons>
+  // ),
 })
 
 const styles = StyleSheet.create({
-  wrapper: {
-    padding: 10,
+  container: {
+    flex: 1,
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    fontFamily: 'open-regular',
-    marginVertical: 10,
+  scrollContainer: {
+    padding: 16,
   },
   textarea: {
-    padding: 10,
+    paddingVertical: 10,
     marginBottom: 10,
   },
-  image: {
+  buttonContainer: {
+    position: 'absolute',
     width: '100%',
-    height: 200,
-    marginBottom: 10,
-  }
+    bottom: 16,
+  },
 })

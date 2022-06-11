@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, Image, Button, ScrollView, Alert } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch, useSelector } from 'react-redux';
+import * as Haptics from 'expo-haptics';
 
 import { AppHeaderIcon } from "../components/AppHeaderIcon";
 import { THEME } from "../theme";
@@ -57,13 +58,25 @@ export const PostScreen = ({ navigation }) => {
   }
 
   return (
-    <ScrollView>
-      <Image source={{uri: postItem.img}} style={styles.image}/>
-      <View style={styles.textWrap}>
-        <Text style={styles.title}>{postItem.text}</Text>
+    <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.contentContainer}>
+          <Image source={{uri: postItem.img}} style={styles.image}/>
+          <View style={styles.textWrap}>
+            <Text style={styles.title}>
+              {postItem.text}
+              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
+              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
+              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
+              {/*{postItem.text.concat(' ').repeat(10)}{'\n'}*/}
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+      <View style={styles.button}>
+        <Button title='Delete' color={THEME.DANGER_COLOR} onPress={removeHandler}/>
       </View>
-      <Button title='Delete' color={THEME.DANGER_COLOR} onPress={removeHandler}/>
-    </ScrollView>
+    </View>
   )
 }
 
@@ -71,6 +84,11 @@ PostScreen.navigationOptions = ({ navigation }) => {
   const date = navigation.getParam('date');
   const booked = navigation.getParam('booked');
   const toggleHandler = navigation.getParam('toggleHandler');
+
+  const onPressHandler = async () => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    toggleHandler();
+  }
 
   const iconName = booked ? 'ios-star' : 'ios-star-outline';
   return {
@@ -80,7 +98,7 @@ PostScreen.navigationOptions = ({ navigation }) => {
         <Item
           title='Take photo'
           iconName={iconName}
-          onPress={toggleHandler}
+          onPress={onPressHandler}
         />
       </HeaderButtons>
     ),
@@ -88,14 +106,24 @@ PostScreen.navigationOptions = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: 16,
+  },
   image: {
     width: '100%',
     height: 200,
+    borderRadius: 5,
   },
   textWrap: {
-    padding: 10
+    paddingVertical: 10,
   },
   title: {
     fontFamily: 'open-regular',
+  },
+  button: {
+    marginBottom: 16,
   }
 })

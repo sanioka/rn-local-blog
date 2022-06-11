@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Self Blog App",
-    "slug": "rn-self-blog",
-    "version": "1.0.2",
+    "name": "Local Blog App",
+    "slug": "rn-local-blog",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/rn-icon.png",
     "splash": {
@@ -18,16 +18,16 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.sanioka.rnselfblog",
-      "buildNumber": "1.0.2"
+      "bundleIdentifier": "com.sanioka.rnlocalblog",
+      "buildNumber": "1.0.5"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/rn-icon.png",
         "backgroundColor": "#242832"
       },
-      "package": "com.sanioka.rnselfblog",
-      "versionCode": 2,
+      "package": "com.sanioka.rnlocalblog",
+      "versionCode": 5,
       "permissions": [
         "CAMERA",
         "MEDIA_LIBRARY",

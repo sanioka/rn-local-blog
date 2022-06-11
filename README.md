@@ -1,4 +1,12 @@
-# rn-self-posts
+# rn-local-blog
+
+| <img src="./images/image1.png" alt="App Preview" width="20%"/> | <img src="./images/image2.png" alt="App Preview" width="20%"/> |
+
+Prototype:
+
+| <img src="./images/prototype-1.png" alt="Prototype Preview" width="20%"/> |
+
+<br>
 
 ### How to build project
 

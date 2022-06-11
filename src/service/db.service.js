@@ -1,6 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 
-const db = SQLite.openDatabase('rn-self-posts.db');
+const db = SQLite.openDatabase('rn-local-blog.db');
 
 export class DB {
   static init() {

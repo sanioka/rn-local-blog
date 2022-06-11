@@ -8,7 +8,7 @@ export const AboutScreen = (props) => {
   return (
     <View style={styles.center}>
       <Text style={styles.text} textAlign={'center'}>React Native Udemy Course {"\n"} by Vladilen Minin.</Text>
-      <Text style={styles.text}>App version <Text style={styles.version}>1.0.2</Text></Text>
+      <Text style={styles.text}>App version <Text style={styles.version}>1.0.5</Text></Text>
     </View>
   )
 }

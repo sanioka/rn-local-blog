@@ -3,8 +3,9 @@
 | <img src="./images/image1.png" alt="App Preview" width="20%"/>
 | <img src="./images/image2.png" alt="App Preview" width="20%"/>
 
-| <img src="./images/expo-go.svg" alt="Expo Go" width="20%"/>
-| Realtime Demo by Expo: https://expo.dev/@sanioka/rn-local-blog?serviceType=classic&distribution=expo-go
+### ✅ Realtime Demo by Expo:<br>
+<img src="./images/expo-go.svg" alt="Expo Go" width="20%"/><br>
+https://expo.dev/@sanioka/rn-local-blog?serviceType=classic&distribution=expo-go
 
 
 ### Prototype:

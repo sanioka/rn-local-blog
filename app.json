@@ -2,6 +2,7 @@
   "expo": {
     "name": "Local Blog App",
     "slug": "rn-local-blog",
+    "privacy": "public",
     "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/rn-icon.png",
